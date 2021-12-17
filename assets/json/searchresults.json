@@ -1,0 +1,63 @@
+{
+    "meta": {
+        "disclaimer": "Do not rely on this data, this data is for demo purpose only.",
+        "terms": "https://github.com/AmitXShukla/ClinicalTrials.gov_API_Loop_AI/blob/main/LICENSE",
+        "license": "https://github.com/AmitXShukla/ClinicalTrials.gov_API_Loop_AI/blob/main/LICENSE",
+        "last_updated": "2021-12-15",
+        "results": {
+            "skip": 0,
+            "limit": 10,
+            "total": 4000000
+        }
+    },
+    "results": [
+        {
+            "transactionType": "STUDY",
+            "itemID": "ITEM12345",
+            "UNSPSC": "44000000",
+            "entity": "SCAL",
+            "category": "Interventional (Clinical Trial)",
+            "resultType": "Study",
+            "preferredGroup": "Department of Research CDC",
+            "onContract": "N",
+            "description": "Randomization of registered nurses stratified by site (n=15) to either standard or tech-supported HBPC",
+            "message": "ALERT: NEW STUDY: "
+        },
+        {
+            "transactionType": "STUDY",
+            "itemID": "ITEM12345",
+            "UNSPSC": "44000000",
+            "entity": "SCAL",
+            "category": "Interventional (Clinical Trial)",
+            "resultType": "Study",
+            "preferredGroup": "Department of Research CDC",
+            "onContract": "N",
+            "description": "Randomization of registered nurses stratified by site (n=15) to either standard or tech-supported HBPC",
+            "message": "ALERT: NEW STUDY: "
+        },
+        {
+            "transactionType": "STUDY",
+            "itemID": "ITEM12345",
+            "UNSPSC": "44000000",
+            "entity": "SCAL",
+            "category": "Interventional (Clinical Trial)",
+            "resultType": "Study",
+            "preferredGroup": "Department of Research CDC",
+            "onContract": "N",
+            "description": "Randomization of registered nurses stratified by site (n=15) to either standard or tech-supported HBPC",
+            "message": "ALERT: NEW STUDY: "
+        },
+        {
+            "transactionType": "STUDY",
+            "itemID": "ITEM12345",
+            "UNSPSC": "44000000",
+            "entity": "SCAL",
+            "category": "Interventional (Clinical Trial)",
+            "resultType": "Study",
+            "preferredGroup": "Department of Research CDC",
+            "onContract": "N",
+            "description": "Randomization of registered nurses stratified by site (n=15) to either standard or tech-supported HBPC",
+            "message": "ALERT: NEW STUDY: "
+        }
+    ]
+}

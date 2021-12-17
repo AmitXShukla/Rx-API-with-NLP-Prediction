@@ -1,0 +1,39 @@
+{
+    "meta": {
+        "disclaimer": "Do not rely on this data, this data is for demo purpose only.",
+        "terms": "https://github.com/AmitXShukla/ClinicalTrials.gov_API_Loop_AI/blob/main/LICENSE",
+        "license": "https://github.com/AmitXShukla/ClinicalTrials.gov_API_Loop_AI/blob/main/LICENSE",
+        "last_updated": "2021-12-15",
+        "results": {
+            "skip": 0,
+            "limit": 10,
+            "total": 6700
+        }
+    },
+    "results": [
+        {
+            "entity": "NCAL",
+            "city": "Oakland",
+            "status": "red",
+            "message": "ALERT: DUE SUBMISSION- Examining Vaccine Effectiveness (VE) of Flublok Relative to Standard Dose Inactivated Influenza Vaccine."
+        },
+        {
+            "entity": "NCAL",
+            "city": "SanFrancisco",
+            "status": "yellow",
+            "message": "ALERT: STUDY CLOSED: develop a manual-based cognitive behavioral therapy (CBT)."
+        },
+        {
+            "entity": "SCAL",
+            "city": "Irvine",
+            "status": "orange",
+            "message": "ALERT: NONE: Reducing Sedentary Time in Older Adults"
+        },
+        {
+            "entity": "NW",
+            "city": "Seattle",
+            "status": "green",
+            "message": "ALERT: NEW STUDY: Comparative Effectiveness Trial of Home-Based Palliative Care in Older Adults"
+        }
+    ]
+}
