@@ -46,12 +46,11 @@ It acts as an AI assistant to help user make quick informed decision. As user in
     Database: any (**Oracle | MYSQL | Firebase | MongoDB)
     AI: JuliaLang & FluxML.ai | Python & Pytorch
 
-
 # Application Process
-<font color=red>TODO</font>
+![Application Process](/assets/images/Application_Process.png)
 
 # System Process
-<font color=red>TODO</font>
+![Application Process](/assets/images/ERD.png)
 
 # License Agreement
 https://github.com/AmitXShukla/ClinicalTrials.gov_API_Loop_AI/blob/main/LICENSE

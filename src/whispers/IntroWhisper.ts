@@ -18,7 +18,7 @@ export default class IntroWhisper {
   async getData(str) {
     const request: network.HTTPRequest = {
       method: 'GET',
-      url: `https://raw.githubusercontent.com/AmitXShukla/SCM_Rx_Inventory_OLIVEai/main/assets/json/searchresults.json`,
+      url: `https://raw.githubusercontent.com/AmitXShukla/ClinicalTrials.gov_API_Loop_AI/main/assets/json/searchresults.json`,
     };
     const response = await network.httpRequest(request);
     const decodedBody = await network.decode(response.body);

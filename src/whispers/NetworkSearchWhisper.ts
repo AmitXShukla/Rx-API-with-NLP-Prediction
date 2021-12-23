@@ -14,7 +14,7 @@ export default class NetworkSearchWhisper {
 
   constructor(recalls: Recall[]) {
     this.whisper = undefined;
-    this.label = 'SCM_Rx_INV Search Results';
+    this.label = 'Search Results';
     this.props = {
       recalls,
     };
@@ -38,9 +38,7 @@ export default class NetworkSearchWhisper {
 
           resultType: ${recall.resultType}
 
-          preferredItem: ${recall.preferredItem}
-
-          preferredVendor: ${recall.preferredVendor}
+          preferredGroup: ${recall.preferredItem}
 
           onContract: ${recall.onContract}
 
@@ -50,18 +48,10 @@ export default class NetworkSearchWhisper {
 
           # AI ALERTS
           ## Anomaly Detection
-          price: ${recall.alert["anomalyDetection"].price}
+          none
 
-          receivingTime: ${recall.alert["anomalyDetection"].receivingTime}
-
-          qtyOrdered: ${recall.alert["anomalyDetection"].qtyOrdered}
-
-          qtyOnHand: ${recall.alert["anomalyDetection"].qtyOnHand}
-
-          matchExceptionRaised: ${recall.alert["anomalyDetection"].matchExceptionRaised}
-
-          ## Purchase Recommendation
-          ${recall.alert["purchaseRecommendation"]}
+          ## matching studies
+          none
           `;
 
           whisper.create({

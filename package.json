@@ -82,9 +82,7 @@
       },
       "window": {},
       "ui": {},
-      "whisper": {
-        "value": "NetworSearchWhisper"
-      }
+      "whisper": {}
     }
   }
 }
