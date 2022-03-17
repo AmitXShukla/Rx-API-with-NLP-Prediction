@@ -14,7 +14,7 @@ export default class NetworkSearchWhisper {
 
   constructor(recalls: Recall[]) {
     this.whisper = undefined;
-    this.label = 'Search Results';
+    this.label = 'CT.gov Search Results';
     this.props = {
       recalls,
     };
@@ -22,49 +22,49 @@ export default class NetworkSearchWhisper {
   createComponents() {
     const components = [];
     this.props.recalls.forEach((recall) => {
-      components.push({
-        type: whisper.WhisperComponentType.Link,
-        text: `ENTITY: ${recall.entity}- ${recall.transactionType} (${recall.itemID})`,
-        onClick: () => {
-          const markdown = stripIndent`
-          ## Item Details
-          transactionType: ${recall.transactionType}
 
-          UNSPSC: ${recall.UNSPSC}
-
-          entity: ${recall.entity}
-
-          category: ${recall.category}
-
-          resultType: ${recall.resultType}
-
-          preferredGroup: ${recall.preferredItem}
-
-          onContract: ${recall.onContract}
-
-          description: ${recall.description}
-
-          message: ${recall.message}
-
-          # AI ALERTS
-          ## Anomaly Detection
-          none
-
-          ## matching studies
-          none
-          `;
-
-          whisper.create({
-            label: `Details for ${recall.itemID}`,
-            components: [
-              {
-                type: whisper.WhisperComponentType.Markdown,
-                body: markdown,
-              },
-            ],
-          });
-        },
-      });
+      try {
+        components.push({
+          type: whisper.WhisperComponentType.Link,
+          text: `${recall.NCTId[0]} - ${recall.Condition[0]}`,
+          onClick: () => {
+            const markdown = stripIndent`
+  
+  **BriefTitle:** ${recall.BriefTitle[0]}
+  
+  **OverallStatus:** ${recall.OverallStatus[0]}
+  
+  **StartDate:** ${recall.StartDate[0]}
+  
+  **CompletionDate:** ${recall.CompletionDate[0]}
+  
+  **LeadSponsorName:** ${recall.LeadSponsorName[0]}
+  
+  **BriefSummary:** ${recall.BriefSummary[0].replace("<", " ")}
+  
+  **DetailedDescription:** ${recall.DetailedDescription[0]}
+  
+  # NLP ALERTS
+  ## matching studies - on-premise DB
+  none
+  `;
+            whisper.create({
+              label: `Details for ${recall.NCTId[0]} - ${recall.Condition[0]}`,
+              components: [
+                {
+                  type: whisper.WhisperComponentType.Markdown,
+                  body: markdown,
+                },
+              ],
+            });
+          },
+        });
+      } catch (error) {
+        components.push({
+          type: whisper.WhisperComponentType.Link,
+          text: `no results returned.`
+        });
+      }
     });
 
     return components;
@@ -123,6 +123,6 @@ export default class NetworkSearchWhisper {
     if (err) {
       console.error('There was an error closing Network whisper', err);
     }
-    console.log('Network whisper closed');
+    // console.log('Network whisper closed');
   }
 }

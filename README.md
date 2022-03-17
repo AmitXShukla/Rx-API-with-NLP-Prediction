@@ -1,7 +1,7 @@
 # Loop Name: ClinicalTrials API with NLP Prediction
 Display active studies from Clinical Trial.gov API/database based on disease terms.
 
-Loop features an active NLP AI which further classify studies based using on-premise pre-trained NLP Predictive Analytics and find similar matching project studies in local databases.
+Loop also features an active NLP AI which further classify studies based using on-premise pre-trained NLP Predictive Analytics and find similar matching project studies in local databases.
 
 # Loop metadata 
 #### Author: Amit Shukla
@@ -41,33 +41,30 @@ It acts as an AI assistant to help user make quick informed decision. As user in
     Front end: Olive Helps
     Middleware: Olive Loop
     REST API: https://www.clinicaltrials.gov/api/gui
-              JuliaLang | NodeJS | Spacy.io NLP Model
+              JuliaLang | Oracle AutoML | Spacy.io NLP Model
     Cloud: any (** Oracle OCI | Microsoft Azure | AWS)
-    Database: any (**Oracle | MYSQL | Firebase | MongoDB)
-    AI: JuliaLang & FluxML.ai | Python & Pytorch
+    AI: JuliaLang & FluxML.ai
 
 # Application Process
-![Application Process](/assets/images/Application_Process.png)
+![Application Process](/assets/images/app_process.png)
 
 # System Process
-![Application Process](/assets/images/ERD.png)
+![Application Process](/assets/images/Application_Process.png)
 
 # License Agreement
 https://github.com/AmitXShukla/ClinicalTrials.gov_API_Loop_AI/blob/main/LICENSE
 
 # Privacy Policy
-https://github.com/AmitXShukla/SCM_Rx_Inventory_OLIVEai/blob/main/LICENSE
+https://github.com/AmitXShukla/ClinicalTrials.gov_API_Loop_AI/blob/main/LICENSE
 
 # Aptitudes used
-    clipboardListener
-    keyboardListener
     networkExample
     searchListener
 
 
 # how Loop/Author uses the user’s information
 
-    CT_OliveAI loop reads clipboard/ user input text and access/search database / AI Prediction analytics through REST API and renders results.
+    CT_OliveAI loop reads user input text and access/search database / AI Prediction analytics through REST API and renders results.
 
     This loop does NOT store any user input information anywhere in application and it does NOT alter/update any back-end information based on Olive Helps loop user input.
 
@@ -122,3 +119,34 @@ https://github.com/AmitXShukla/SCM_Rx_Inventory_OLIVEai/blob/main/LICENSE
 
 # loop is utilizing the loopOpenHandler to initiate loop's start whisper upon selection from search dropdown
     tested
+
+---
+
+
+Condition
+ArmGroupLabel
+Intervention
+OfficialTitle
+NCTId
+StartDate
+CompletionDate
+OverallStatus
+LeadSponsorName
+BriefSummary
+DetailedDescription
+
+"Location":[
+                  {
+                    "LocationFacility":"Fuwai Hospital",
+                    "LocationCity":"Beijing",
+                    "LocationState":"Beijing",
+                    "LocationZip":"100037",
+                    "LocationCountry":"China"
+                  }
+                ]
+
+example search url
+
+https://clinicaltrials.gov/api/query/study_fields?fmt=json&max_rnk=1&expr=heart+attack&fields=NCTId,Condition,BriefTitle,OverallStatus,StartDate,CompletionDate,LeadSponsorName,BriefSummary,DetailedDescription
+
+CT is using a Clinical Trails.gov live database. Visit https://github.com/AmitXShukla/ClinicalTrials.gov_API_Loop_AI for documentation. Please contact info@elishconsulting.com for on-premise / cloud database connectivity, AI Model services.

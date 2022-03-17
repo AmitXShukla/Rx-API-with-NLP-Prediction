@@ -73,7 +73,7 @@
       "network": {
         "urlDomains": [
           {
-            "value": "clinicaltrials.gov"
+            "value": "*.clinicaltrials.gov"
           },
           {
             "value": "raw.githubusercontent.com"

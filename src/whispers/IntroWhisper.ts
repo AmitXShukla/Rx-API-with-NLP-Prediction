@@ -4,6 +4,7 @@ import { getOverlappingDaysInIntervals } from 'date-fns';
 import { networkExample } from '../aptitudes';
 import { network } from '@oliveai/ldk';
 import NetworkSearchWhisper from '../whispers/NetworkSearchWhisper';
+import { UiWhisper } from '.';
 
 interface Props {
   newMessage: string;
@@ -16,23 +17,43 @@ export default class IntroWhisper {
   props: Props;
 
   async getData(str) {
-    const request: network.HTTPRequest = {
-      method: 'GET',
-      url: `https://raw.githubusercontent.com/AmitXShukla/ClinicalTrials.gov_API_Loop_AI/main/assets/json/searchresults.json`,
-    };
-    const response = await network.httpRequest(request);
-    const decodedBody = await network.decode(response.body);
-    const parsedObject = JSON.parse(decodedBody);
-    const recalls = parsedObject.results;
-    console.log("Print results")
-    console.log(JSON.stringify(recalls))
-    const whisper = new NetworkSearchWhisper(recalls);
-    whisper.show();
+    var Str: String = str;
+    if (Str == null || Str.length < 5 || Str.length > 30) {
+      const whisper = new UiWhisper("Please search for a valid input between 5 to 12 characters.");
+      whisper.show();
+    } else {
+      const request1: network.HTTPRequest = {
+        method: 'GET',
+        headers: { "Content-Type": ["application/json"] },
+        url: "https://clinicaltrials.gov/api/query/study_fields?fmt=json&max_rnk=1&expr=" + str.replace(/\s/g, "+") + "&fields=NCTId,Condition,BriefTitle,OverallStatus,StartDate,CompletionDate,LeadSponsorName,BriefSummary,DetailedDescription",
+      };
+      const request2: network.HTTPRequest = {
+        method: 'GET',
+        url: "https://raw.githubusercontent.com/AmitXShukla/ClinicalTrials.gov_API_Loop_AI/main/assets/json/searchresults.json",
+      };
+      try {
+        const response = await network.httpRequest(request1);
+        const decodedBody = await network.decode(response.body);
+        const parsedObject = JSON.parse(decodedBody);
+        const recalls = parsedObject.StudyFieldsResponse.StudyFields;
+        const whisper = new NetworkSearchWhisper(recalls);
+        whisper.show();
+      } catch (error) {
+        console.log("error:", error)
+        // console.log("calling backup REST API:")
+        const response = await network.httpRequest(request2);
+        const decodedBody = await network.decode(response.body);
+        const parsedObject = JSON.parse(decodedBody);
+        const recalls = parsedObject.results;
+        const whisper = new NetworkSearchWhisper(recalls);
+        whisper.show();
+      }
+    }
   }
 
   constructor() {
     this.whisper = undefined;
-    this.label = 'Welcome to ClinicalTrails.gov_API_AI Loop';
+    this.label = 'search database';
     this.props = {
       newMessage: '',
       numClones: 1,
@@ -48,7 +69,7 @@ export default class IntroWhisper {
     // Intro message.
     const introMessage: whisper.Message = {
       type: whisper.WhisperComponentType.Message,
-      body: 'REST API is using a demo database. Please do not use it for any live reporting purpose. refer to https://github.com/AmitXShukla/ClinicalTrials.gov_API_Loop_AI for documentation.',
+      body: 'CT is using a Clinical Trails.gov live database. Visit https://github.com/AmitXShukla/ClinicalTrials.gov_API_Loop_AI for documentation. Please contact info@elishconsulting.com for on-premise / cloud database connectivity, AI Model services.',
       style: whisper.Urgency.Success,
     };
 
@@ -205,15 +226,15 @@ export default class IntroWhisper {
     // };
     const updatableMessage: whisper.Message = {
       type: whisper.WhisperComponentType.Message,
-      header: 'find ....',
+      header: 'search for ....',
       body: this.props.newMessage || 'Type in the field below to search for input',
       style: whisper.Urgency.Warning,
     };
     const updatableMessageInput: whisper.TextInput = {
       type: whisper.WhisperComponentType.TextInput,
-      label: 'New Search Input',
+      label: 'type here ex. Heart Attack',
       onChange: (_error: Error | undefined, val: string) => {
-        console.log('Updating message text: ', val);
+        // console.log('Updating message text: ', val);
         this.update({ newMessage: val });
       },
     };
@@ -265,7 +286,7 @@ export default class IntroWhisper {
     return [
       introMessage,
       divider,
-      collapseBox,
+      // collapseBox,
       // divider,
       // alertMessage,
       // boxHeader,
@@ -283,7 +304,7 @@ export default class IntroWhisper {
       // numberInput,
       // select,
       // radioBtn,
-      divider,
+      // divider,
       // updatableComponentsHeading,
       updatableMessage,
       updatableMessageInput,
@@ -322,6 +343,6 @@ export default class IntroWhisper {
     if (err) {
       console.error('There was an error closing Intro whisper', err);
     }
-    console.log('Intro whisper closed');
+    // console.log('Intro whisper closed');
   }
 }
